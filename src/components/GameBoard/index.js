@@ -23,11 +23,14 @@ function GameBoard() {
         checkIfBorder();
         checkIfCollapsed();
         checkIfFoodEaten()
-    })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [scores, snakeDots, food, direction])
 
     function getRandomCoordinates() {
-        let x = Math.floor((Math.random() * (99 + 1)/2)*2);
-        let y = Math.floor((Math.random() * (99 + 1)/2)*2);
+        let min = 1;
+        let max = 98;
+        let x = Math.floor((Math.random() * (max - min + 1) + min) / 2) * 2;
+        let y = Math.floor((Math.random() * (max - min + 1) + min) / 2) * 2;
         return [x, y];
     }
 
@@ -96,7 +99,9 @@ function GameBoard() {
     }
 
     function checkIfFoodEaten() {
-        let head = snakeDots[snakeDots.length - 1];
+        let snake = [...snakeDots]
+        let head = snake[snake.length - 1];
+        console.log('eat');
         if (head[0] === food[0] && head[1] === food[1]) {
             // console.log('food', food);
             setFood(getRandomCoordinates())
