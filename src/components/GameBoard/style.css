@@ -1,0 +1,8 @@
+.game-area
+{
+    height: 550px;
+    width: 550px;
+    position: relative;
+    display: inline-block;
+    border: 2px solid black;
+}
