@@ -12,7 +12,7 @@ function GameBoard() {
     const [direction, setDirection] = useState('right');
 
     useEffect(() => {
-        interval = setInterval(moveTheSnake, 100);
+        interval = setInterval(moveTheSnake, 80);
         document.onkeydown = onStart;
         return () => {
             clearInterval(interval)
@@ -101,7 +101,6 @@ function GameBoard() {
     function checkIfFoodEaten() {
         let snake = [...snakeDots]
         let head = snake[snake.length - 1];
-        console.log('eat');
         if (head[0] === food[0] && head[1] === food[1]) {
             // console.log('food', food);
             setFood(getRandomCoordinates())
